@@ -28,6 +28,6 @@ if [ "$1" = "--uninstall" ]; then
 				echo "Uninstall Failed"
 			fi 
 	fi 
-}
-
+fi
+###MAIN
 install_app
