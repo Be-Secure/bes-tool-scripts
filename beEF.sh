@@ -103,6 +103,7 @@ echo "User creation and ownership  update completed successfully Proceeding with
 echo "Initiating firewall opening and system service restart!!!"
 ufw allow 3000/tcp
 
+echo "Initiating deamon reload/enable/restart"
 systemctl daemon-reload &&
 systemctl enable $INSTALL_NAME
 systemctl restart beef
