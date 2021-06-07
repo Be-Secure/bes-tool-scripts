@@ -18,6 +18,6 @@ if [ "$1" = "--uninstall" ]; then
 	echo "Uninstalling Travis CI"
 	gem uninstall travis-cli
    
- }
-
+fi
+###MAIN
 install_app
