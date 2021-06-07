@@ -44,8 +44,12 @@ EOF
 ##Main ###
 
 if [ "$1" = "--uninstall" ]; then
-  update-alternatives --remove grabber $INSTALL_DIR/grabber.py
   rm -fr $INSTALL_DIR /usr/local/share/applications/$INSTALL_NAME.desktop
+  exit 0
+fi
+
+if [ "$1" = "--run" ]; then
+  zap & > /dev/null 	
   exit 0
 fi
 
@@ -53,8 +57,8 @@ check_artifact
 
 ## Pre-requisites
 echo " Pre-requisites Installation initiated..."
-apt update && 
-	apt install -y openjdk-8-jdk &&
+sudo apt update && 
+	sudo apt install -y openjdk-8-jdk &&
 	JAVA8_HOME=$(update-alternatives --list java | grep java-8 | sed -e 's/\/bin\/java//')
 	if [ $? -eq 0 ] ; then	
 		echo "Pre-requisites Installation completed successfully..."	
@@ -64,7 +68,7 @@ apt update &&
 
 # Remove any previous dir
 echo "ZAP untaring and path setting started!"
-rm -fr $INSTALL_DIR &&
+sudo rm -fr $INSTALL_DIR &&
 	(cd $INSTALL_BASE && tar zxf $ARTIFACT_TARBALL) &&
 	mv $INSTALL_BASE/ZAP_$INSTALL_VERSION $INSTALL_DIR &&
 # Add to path
