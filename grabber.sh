@@ -44,7 +44,7 @@ apt update  &&
 	fi
 #
 # remove any previous dir
-echo "grabber untaring/install started!
+echo "grabber untaring/install started!"
 	rm -fr $INSTALL_DIR && 
 	cd $INSTALL_BASE && 
 	unzip -o $ARTIFACT_TARBALL
