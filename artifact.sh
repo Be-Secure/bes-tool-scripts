@@ -6,8 +6,6 @@ REPOURL="https://jfrog.bintray.com/artifactory-debs"
  echo "Installing Java for Jfrog Artifactory"
  apt-get update
  apt-get install default-jdk -y
- 
- java -version
  if [ $? -eq 0 ]; then
 	
 	wget -qO - $PUBKY |  apt-key add - 
