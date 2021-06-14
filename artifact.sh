@@ -24,6 +24,6 @@ REPOURL="https://jfrog.bintray.com/artifactory-debs"
 	else
 		echo "Failed installation, Please check logs"
 	fi 
- fi
- 
- echo "Java install failed !!"
+ else
+ 	echo "Java install failed !!"
+fi
