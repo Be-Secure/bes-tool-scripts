@@ -8,9 +8,16 @@ install_app(){
 	if [ $ver -eq 2 ]; then
 		echo "Python version is 2 " 
 		apt install -y python-pip
+
+		echo "Install pybuilder/bandit"
+		pip install -y pybuilder bandit
 	elif [ $ver -eq 3 ]; then
 		echo "Python version is 3 " 
 		apt install -y python3-pip
+
+		echo "Install pybuilder/bandit"
+        pip3 install -y pybuilder bandit
+		
 	else 
 		echo "Unknown python version"
 		exit 1
