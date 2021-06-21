@@ -5,10 +5,22 @@ REPOURL="https://jfrog.bintray.com/artifactory-debs"
 
 install_app(){
 
- echo -e "\e[1;37m Installing Java for Jfrog Artifactory \e[0m"
- apt-get update
- apt-get install default-jdk -y
- 		if [ $? -eq 0 ]; then
+	systemctl status artifactory.service --no-pager
+	if [ $? -eq 0 ]; then
+		echo "\e[1;34m  Application already installed. Exiting... \e[0m"
+		exit 1
+	fi
+
+	java -version
+	if [ $? -ne 0 ]; then
+		echo "\e[1;34m Installing openJdk... \e[0m"
+		apt-get update &&
+		 	apt-get install default-jdk -y
+		if [ $? -ne 0 ]; then	
+			echo "\e[1;31m JDK install failed!!! Exiting... \e[0m"
+			exit 1
+		fi 
+	fi
 	
 	wget -qO - $PUBKY |  apt-key add - 
 	add-apt-repository "deb [arch=amd64] $REPOURL $(lsb_release -cs) main"
@@ -22,15 +34,13 @@ install_app(){
 		systemctl $i artifactory.service --no-pager 
 	done 
 	if [ $? -eq 0 ]; then
-		echo "\e[1;32m  Install succesfull \e[0m"
+		echo "\e[1;32m  Install successfull \e[0m"
 	else
 		echo "\e[1;31m  Failed installation, Please check logs \e[0m"
 	fi 
- else
- echo -e "\e[1;31m Java install failed \e[0m"
-fi
 
 }
+
 
 ####MAIN 
 echo "\e[1;37m  Initiating Jfrog artifactory install!!! \e[0m"

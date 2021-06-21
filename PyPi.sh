@@ -2,39 +2,38 @@
 #
 install_app(){
 
-	apt update
-	echo "Initiating PyPI installation based on the python version"
-	ver=$(python -c"import sys; print(sys.version_info.major)")
-	if [ $ver -eq 2 ]; then
-		echo "Python version is 2 " 
-		apt install -y python-pip
+	echo "\e[1;34m Initiating pip/pybuilder/bandit installation \e[0m"
+    python3 --version
+	if [ $? -eq 0 ]; then	
+		pip3 install pybuilder bandit
 
-		echo "Install pybuilder/bandit"
-		pip install -y pybuilder bandit
-	elif [ $ver -eq 3 ]; then
-		echo "Python version is 3 " 
-		apt install -y python3-pip
+	else
+		echo "\e[1;34m Installing python3. \e[0m"
 
-		echo "Install pybuilder/bandit"
-        pip3 install -y pybuilder bandit
-		
-	else 
-		echo "Unknown python version"
-		exit 1
-	fi
-}
+		apt update &&
+		apt install python3.8
+		if [ $? -ne 0 ]; then
+			echo "\e[1;31m Python3 install failed, Please do a mannual install  \e[0m"
+			exit 1
+		fi 
+		pip3 install pybuilder bandit
+		echo "Installed pybuilder bandit and pip"
+
+	fi 
+
+}	
 
 ###Main
-#
+
 if [ "$1" = "--uninstall" ]; then
 	
 	apt-get remove --purge python-pip
 	if [ $? -ne 0 ]; then
 		apt-get remove --purge python3-pip
 			if [ $? -ne 0 ]; then
-				echo "Uninstall Failed"
+				echo "\e[1;31m Uninstall Failed \e[0m"
 			fi 
 	fi 
 fi
-###MAIN
+
 install_app
