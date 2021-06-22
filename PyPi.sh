@@ -15,15 +15,15 @@ install_app(){
 	echo "\e[1;34m Installing python3. \e[0m"
 
 	apt update &&
-	apt install python3-pip
+	apt install -y python3-pip
 	if [ $? -ne 0 ]; then
 		echo "\e[1;31m Python3 install failed, Please do a mannual install  \e[0m"
 		exit 1
 	fi 
 	install_module
-	echo "\e[1;34m  Installed pybuilder bandit and pip \e[0m""
+	echo "\e[1;34m  Installed pybuilder bandit and pip \e[0m"
 
-	fi 
+     fi 
 
 }	
 
