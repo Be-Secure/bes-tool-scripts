@@ -10,7 +10,6 @@ install_app(){
     python3 -m pip --version
     if [ $? -eq 0 ]; then	
 	install_module
-
     else
 	echo "\e[1;34m Installing python3. \e[0m"
 
@@ -21,7 +20,7 @@ install_app(){
 		exit 1
 	fi 
 	install_module
-	echo "\e[1;34m  Installed pybuilder bandit and pip \e[0m"
+	echo "\e[1;32m  Installed pybuilder bandit and pip \e[0m"
 
      fi 
 
