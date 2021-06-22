@@ -2,6 +2,12 @@
 #
 install_module(){
 	python3 -m pip install pybuilder bandit
+	if [ $? -eq 0 ]; then
+		echo "\e[1;32m  Installed pybuilder bandit and pip \e[0m"
+	else
+		echo "\e[1;31m  Install failed. Existing !! \e[0m"
+		exit 1
+	fi
 }
 
 install_app(){
@@ -20,7 +26,7 @@ install_app(){
 		exit 1
 	fi 
 	install_module
-	echo "\e[1;32m  Installed pybuilder bandit and pip \e[0m"
+	
 
      fi 
 
@@ -30,12 +36,16 @@ install_app(){
 
 if [ "$1" = "--uninstall" ]; then
 	
-	apt-get remove --purge python-pip
+	read -p "Would you like to proceed ?(y/n):" c
+	if [ $c == "n" ]];then
+		echo "Existing"
+		exit 1
+	fi
+	python3 -m pip uninstall bandit pybuilder
 	if [ $? -ne 0 ]; then
-		apt-get remove --purge python3-pip
-			if [ $? -ne 0 ]; then
-				echo "\e[1;31m Uninstall Failed \e[0m"
-			fi 
+		echo "\e[1;31m Uninstall Failed \e[0m"
+	else
+		echo "\e[1;32m Uninstall Successfull \e[0m"
 	fi 
 fi
 
