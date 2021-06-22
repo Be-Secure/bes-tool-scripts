@@ -7,7 +7,7 @@ install_module(){
 install_app(){
 
     echo "\e[1;34m Initiating pip/pybuilder/bandit installation \e[0m"
-    python3 --version
+    python3 -m pip --version
     if [ $? -eq 0 ]; then	
 	install_module
 
@@ -15,13 +15,13 @@ install_app(){
 	echo "\e[1;34m Installing python3. \e[0m"
 
 	apt update &&
-	apt install python3.8
+	apt install python3-pip
 	if [ $? -ne 0 ]; then
 		echo "\e[1;31m Python3 install failed, Please do a mannual install  \e[0m"
 		exit 1
 	fi 
 	install_module
-	echo "Installed pybuilder bandit and pip"
+	echo "\e[1;34m  Installed pybuilder bandit and pip \e[0m""
 
 	fi 
 
