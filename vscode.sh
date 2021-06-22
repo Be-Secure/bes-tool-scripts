@@ -29,5 +29,11 @@ install_app(){
 
 ###Main
 
+if [ -n $(which code) ]; then
+ 
+ echo "\e[1;32m Application already Existing... \e[0m"
+ exit 1
+fi
+
 echo "\e[1;34m  VScode and dependency install initiated!!! \e[0m"
 install_app
