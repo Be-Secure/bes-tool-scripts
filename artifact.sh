@@ -10,7 +10,7 @@ install_app(){
 		echo "\e[1;34m  Application already installed. Exiting... \e[0m"
 		exit 1
 	fi
-
+ 
 	java -version
 	if [ $? -ne 0 ]; then
 		echo "\e[1;34m Installing openJdk... \e[0m"
@@ -66,7 +66,7 @@ uninstall_app(){
             echo "\e[1;32m  Stopping Artifactory Service \e[0m"
             systemctl stop artifactory.service
             i=1
-            while [ i<5 -a "`systemctl show -p ActiveState --value artifactory.service`" = "inactive" ]; do
+            while [ i<5 -a "`systemctl show -p ActiveState --value artifactory.service`" != "inactive" ]; do
                           echo "\e[1;32m  Waiting for Service to stop \e[0m"
               sleep 5
               i=i+1
