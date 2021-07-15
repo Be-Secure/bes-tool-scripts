@@ -20,7 +20,7 @@ install_app(){
 
 	echo "\e[1;34m  Install VScode"
 	sudo apt update &&
-		sudo apt install code
+		sudo apt install code -y
 		if [ $? -eq 0 ]; then
 			echo "\e[1;32m  Application install Successfull. \e[0m"
 		else
