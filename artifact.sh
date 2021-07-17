@@ -12,7 +12,7 @@ install_app(){
 	fi
  
 	
-	if [ -z "`which java`" || `javap -verbose java.lang.String | grep 'major version' | cut -d ' ' -f5` -lt 55 ]; then
+	if [ [ -z "`which java`" ] || [ `javap -verbose java.lang.String | grep 'major version' | cut -d ' ' -f5` -lt 55 ] ]; then
 		echo "\e[1;34m Installing openJdk... \e[0m"
 		apt-get update &&
 		 	apt-get install openjdk-11-jdk -y
