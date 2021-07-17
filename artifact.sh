@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PUBKY="https://api.bintray.com/orgs/jfrog/keys/gpg/public.key"
-REPOURL="https://jfrog.bintray.com/artifactory-debs"
+PUBKY="https://releases.jfrog.io/artifactory/api/gpg/key/public"
+REPOURL="https://releases.jfrog.io/artifactory-debs"
 
 install_app(){
 
