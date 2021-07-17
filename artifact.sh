@@ -35,7 +35,7 @@ install_app(){
         fi;
 	
 	wget -qO - $PUBKY |  apt-key add - 
-	add-apt-repository "deb [arch=amd64] $REPOURL $(lsb_release -cs) main"
+	add-apt-repository "deb $REPOURL $(lsb_release -cs) main"
 	apt-get update
 	
 	echo "\e[1;37m Installing Jfrog artifactory \e[0m"
