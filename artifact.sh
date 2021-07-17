@@ -11,11 +11,11 @@ install_app(){
 		exit 1
 	fi
  
-	java -version
-	if [ $? -ne 0 ]; then
+	
+	if [ -z "`which java`" || `javap -verbose java.lang.String | grep 'major version' | cut -d ' ' -f5` -lt 55 ]; then
 		echo "\e[1;34m Installing openJdk... \e[0m"
 		apt-get update &&
-		 	apt-get install default-jdk -y
+		 	apt-get install openjdk-11-jdk -y
 		if [ $? -ne 0 ]; then	
 			echo "\e[1;31m JDK install failed!!! Exiting... \e[0m"
 			exit 1
