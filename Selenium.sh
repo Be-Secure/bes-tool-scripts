@@ -51,7 +51,7 @@ if [ "$1" = "--uninstall" ]; then
   systemctl stop $INSTALL_NAME
   update-alternatives --remove $INSTALL_NAME $INSTALL_DIR/$INSTALL_NAME.sh
   systemctl disable $INSTALL_NAME
-  rm -fr $INSTALL_DIR $SYSTEMD_DIR/$INSTALL_NAME.desktop
+  rm -fr $INSTALL_DIR $SYSTEMD_DIR/$INSTALL_NAME.desktop $ARTIFACT_TARBALL
   exit 0
 fi
 #
