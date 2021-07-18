@@ -3,17 +3,6 @@
 PUBKY="https://api.bintray.com/orgs/jfrog/keys/gpg/public.key"
 REPOURL="https://jfrog.bintray.com/artifactory-debs"
 
-install_java(){
-
-echo "\e[1;34m Installing openJdk... \e[0m"
-		apt-get update &&
-		 	apt-get install openjdk-11-jdk -y
-		if [ $? -ne 0 ]; then	
-			echo "\e[1;31m JDK install failed!!! Exiting... \e[0m"
-			exit 1
-		fi 
-
-}
 
 install_app(){
 
@@ -26,9 +15,12 @@ install_app(){
  
 	
 	if [ -z "`which java`" ] ; then
-            install_java		
-        elif [ `javap -verbose java.lang.String | grep 'major version' | cut -d ' ' -f5` -lt 55 ]
-            install_java
+           echo "\e[1;34m Installing openJdk... \e[0m"
+	   apt-get update && apt-get install default-jdk -y
+	   if [ $? -ne 0 ]; then	
+	       echo "\e[1;31m JDK install failed!!! Exiting... \e[0m"
+	       exit 1
+	   fi 		
 	fi
 
         grep -q 'artifactory' /etc/group
