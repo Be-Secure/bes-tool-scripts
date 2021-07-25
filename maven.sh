@@ -18,7 +18,7 @@ check_artifact(){
 			INSTALL_VERSION="$2"
 		fi
 		
-		echo "Initiating installation process for Mavan version : $INSTALL_VERSION"
+		echo "Initiating installation process for Maven version : $INSTALL_VERSION"
 		sudo wget --no-check-certificate  https://mirrors.estointernet.in/apache/maven/maven-3/$INSTALL_VERSION/binaries/apache-maven-$INSTALL_VERSION-bin.tar.gz  -P  $INSTALL_ARTIFACTS_DIR
 		if [  $? -ne 0 ]; then
 			echo "Source download failed!!!"
@@ -33,6 +33,7 @@ check_artifact(){
 if [ "$1" = "--uninstall" ]; then
   update-alternatives --remove mvn $INSTALL_DIR/bin/mvn
   rm -fr $INSTALL_DIR
+  echo "Maven uninstalled Successfully"
   exit 0
 fi
 #
