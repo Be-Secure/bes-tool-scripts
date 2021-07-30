@@ -4,7 +4,7 @@
 uninstall_module(){
  
         echo "\e[1;34m This operation would unstall the listed modules : bandit \e[0m"
-	python3 -m pip uninstall bandit
+	python3 -m pip uninstall -y bandit
 		if [ $? -ne 0 ]; then
 			echo "\e[1;31m Uninstall Failed \e[0m"
 		else
