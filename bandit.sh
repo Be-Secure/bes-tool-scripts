@@ -3,8 +3,8 @@
 
 uninstall_module(){
  
-        echo "\e[1;34m This operation would uninstall the listed modules : pybuilder \e[0m"
-	python3 -m pip uninstall -y pybuilder
+        echo "\e[1;34m This operation would unstall the listed modules : bandit \e[0m"
+	python3 -m pip uninstall -y bandit
 		if [ $? -ne 0 ]; then
 			echo "\e[1;31m Uninstall Failed \e[0m"
 		else
@@ -13,9 +13,9 @@ uninstall_module(){
 }
 
 install_module(){
-	python3 -m pip install pybuilder
+	python3 -m pip install bandit
 	if [ $? -eq 0 ]; then
-		echo "\e[1;32m  Installed pybuilder and pip \e[0m"
+		echo "\e[1;32m  Installed bandit \e[0m"
 	else
 		echo "\e[1;31m  Install failed. Existing !! \e[0m"
 		exit 1
@@ -24,7 +24,7 @@ install_module(){
 
 install_app(){
 
-    echo "\e[1;34m Initiating pip/pybuilder installation \e[0m"
+    echo "\e[1;34m Initiating bandit installation \e[0m"
     python3 -m pip --version
     if [ $? -eq 0 ]; then	
 	install_module
